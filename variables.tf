@@ -1,13 +1,48 @@
+variable "project" {
+  description = "GCP project ID"
+  type        = string
+  default     = "gcp-networking-489914"
+}
+
+variable "region" {
+  description = "GCP region"
+  type        = string
+  default     = "us-east1"
+}
+
+variable "zone" {
+  description = "GCP zone"
+  type        = string
+  default     = "us-east1-b"
+}
+
 variable "instance_name" {
+  description = "Name for the compute instance"
   type        = string
-  description = "Name for the Google Compute instance"
+  default     = "terraform-vm-1"
 }
-variable "instance_zone" {
+
+variable "machine_type" {
+  description = "Machine type for the instance"
   type        = string
-  description = "Zone for the Google Compute instance"
-}
-variable "instance_type" {
-  type        = string
-  description = "Disk type of the Google Compute instance"
   default     = "e2-micro"
-  }
+}
+
+variable "tags" {
+  description = "Network tags to apply to the instance"
+  type        = list(string)
+  default     = ["web", "dev"]
+}
+
+variable "image" {
+  description = "Boot disk image for the instance"
+  type        = string
+  default     = "debian-cloud/debian-12"
+}
+
+variable "network" {
+  description = "Network to attach the instance to"
+  type        = string
+  default     = "default"
+}
+
