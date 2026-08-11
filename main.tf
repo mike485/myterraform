@@ -8,21 +8,21 @@ terraform {
 }
 
 provider "google" {
-  project = "gcp-networking-489914"
-  region = "us-east1"
-  zone = "us-east1-b"
+  project = var.project
+  region  = var.region
+  zone    = var.zone
 }
 resource "google_compute_instance" "terraform" {
-  name         = "terraform-vm-1"
-  machine_type = "e2-micro"
-  tags = ["web", "dev"] // Adding network tags to the instance
+  name         = var.instance_name
+  machine_type = var.machine_type
+  tags = var.tags // Adding network tags to the instance
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-12"
+      image = var.image
     }
   }
   network_interface {
-    network = "default"
+    network = var.network
     access_config {
     }
   }
