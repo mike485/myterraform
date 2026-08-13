@@ -8,9 +8,8 @@ resource "google_compute_instance" "terraform" {
     }
   }
   network_interface {
-    network = var.network
-    access_config {
-    }
+    network    = google_compute_network.vpc_network.name
+    subnetwork = google_compute_subnetwork.secondary_subnet.name
   }
   allow_stopping_for_update = true 
   // Allow to update instance without stopping it

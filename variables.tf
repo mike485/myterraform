@@ -43,6 +43,65 @@ variable "image" {
 variable "network" {
   description = "Network to attach the instance to"
   type        = string
-  default     = "default"
+  default     = "managenet" # Default to the VPC created in this configuration
 }
 
+# VPC Variables ####################################################
+variable "vpc_name" {
+  description = "Name of the VPC network"
+  type        = string
+  default     = "managenet"
+}
+
+variable "vpc_description" {
+  description = "Description of the VPC network"
+  type        = string
+  default     = "VPC network created with Terraform"
+}
+
+variable "routing_mode" {
+  description = "The network routing mode (REGIONAL or GLOBAL)"
+  type        = string
+  default     = "REGIONAL"
+  
+  validation {
+    condition     = contains(["REGIONAL", "GLOBAL"], var.routing_mode)
+    error_message = "Routing mode must be either REGIONAL or GLOBAL."
+  }
+}
+
+variable "primary_subnet_name" {
+  description = "Name of the primary subnet"
+  type        = string
+  default     = "primary-subnet"
+}
+
+variable "primary_subnet_cidr" {
+  description = "CIDR range for the primary subnet"
+  type        = string
+  default     = "10.0.1.0/24"
+}
+
+variable "private_ip_google_access" {
+  description = "Enable Private Google Access on the subnet"
+  type        = bool
+  default     = true
+}
+
+variable "allow_ssh_from" {
+  description = "IP ranges allowed to SSH"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
+variable "secondary_subnet_name" {
+  description = "Name of the secondary subnet"
+  type        = string
+  default     = "secondary-subnet"
+}
+
+variable "secondary_subnet_cidr" {
+  description = "CIDR range for the secondary subnet"
+  type        = string
+  default     = "10.0.2.0/24"
+}
