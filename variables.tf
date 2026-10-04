@@ -19,7 +19,7 @@ variable "zone" {
 variable "instance_name" {
   description = "Name for the compute instance"
   type        = string
-  default     = "terraform-vm-1"
+  default     = "terraform-vm-2"
 }
 
 variable "machine_type" {
@@ -63,7 +63,7 @@ variable "routing_mode" {
   description = "The network routing mode (REGIONAL or GLOBAL)"
   type        = string
   default     = "REGIONAL"
-  
+
   validation {
     condition     = contains(["REGIONAL", "GLOBAL"], var.routing_mode)
     error_message = "Routing mode must be either REGIONAL or GLOBAL."
