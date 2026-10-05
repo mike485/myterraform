@@ -67,8 +67,8 @@ resource "google_compute_firewall" "allow_ssh" {
     ports    = ["22"]
   }
 
-  source_ranges = var.allow_ssh_from
-  target_tags   = ["ssh"]
+  source_ranges = ["0.0.0.0/0"] #var.allow_ssh_from
+#  target_tags   = ["ssh"]
 }
 
 # Firewall Rule - Allow HTTP
