@@ -62,7 +62,7 @@ variable "vpc_description" {
 variable "prod_network_project" {
   description = "GCP project ID for the production VPC network"
   type        = string
-  default     = "dev-project-489914"
+  default     = "gcp-networking-489914"
 }
 
 variable "prod_network_name" {
