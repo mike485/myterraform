@@ -59,6 +59,126 @@ variable "vpc_description" {
   default     = "VPC network created with Terraform"
 }
 
+variable "prod_network_project" {
+  description = "GCP project ID for the production VPC network"
+  type        = string
+  default     = "dev-project-489914"
+}
+
+variable "prod_network_name" {
+  description = "Name of the production VPC network"
+  type        = string
+  default     = "prod-managenet"
+}
+
+variable "prod_network_description" {
+  description = "Description of the production VPC network"
+  type        = string
+  default     = "Production Network"
+}
+
+variable "prod_network_auto_create_subnetworks" {
+  description = "Whether the production VPC automatically creates subnetworks"
+  type        = bool
+  default     = false
+}
+
+variable "prod_network_routing_mode" {
+  description = "Routing mode for the production VPC network"
+  type        = string
+  default     = "REGIONAL"
+}
+
+variable "prod_network_bgp_best_path_selection_mode" {
+  description = "BGP best-path selection mode for the production VPC network"
+  type        = string
+  default     = "LEGACY"
+}
+
+variable "prod_primary_subnet_name" {
+  description = "Name of the production primary subnet"
+  type        = string
+  default     = "prod-primary-subnet"
+}
+
+variable "prod_primary_subnet_description" {
+  description = "Description of the production primary subnet"
+  type        = string
+  default     = "Production subnet"
+}
+
+variable "prod_primary_subnet_cidr" {
+  description = "IPv4 CIDR range for the production primary subnet"
+  type        = string
+  default     = "30.0.1.0/24"
+}
+
+variable "prod_primary_subnet_stack_type" {
+  description = "IP stack type for the production primary subnet"
+  type        = string
+  default     = "IPV4_ONLY"
+}
+
+variable "prod_primary_subnet_region" {
+  description = "Region for the production primary subnet"
+  type        = string
+  default     = "us-central1"
+}
+
+variable "prod_primary_subnet_private_ip_google_access" {
+  description = "Whether Private Google Access is enabled for the production subnet"
+  type        = bool
+  default     = true
+}
+
+variable "prod_primary_subnet_enable_flow_logs" {
+  description = "Whether VPC flow logs are enabled for the production subnet"
+  type        = bool
+  default     = true
+}
+
+variable "prod_secondary_subnet_name" {
+  description = "Name of the production secondary subnet"
+  type        = string
+  default     = "prod-secondary-subnet"
+}
+
+variable "prod_secondary_subnet_description" {
+  description = "Description of the production secondary subnet"
+  type        = string
+  default     = "Production secondary subnet"
+}
+
+variable "prod_secondary_subnet_cidr" {
+  description = "IPv4 CIDR range for the production secondary subnet"
+  type        = string
+  default     = "30.0.2.0/24"
+}
+
+variable "prod_secondary_subnet_stack_type" {
+  description = "IP stack type for the production secondary subnet"
+  type        = string
+  default     = "IPV4_ONLY"
+}
+
+variable "prod_secondary_subnet_region" {
+  description = "Region for the production secondary subnet"
+  type        = string
+  default     = "us-central1"
+}
+
+variable "prod_secondary_subnet_private_ip_google_access" {
+  description = "Whether Private Google Access is enabled for the production secondary subnet"
+  type        = bool
+  default     = true
+}
+
+variable "prod_secondary_subnet_enable_flow_logs" {
+  description = "Whether VPC flow logs are enabled for the production secondary subnet"
+  type        = bool
+  default     = true
+}
+
 variable "routing_mode" {
   description = "The network routing mode (REGIONAL or GLOBAL)"
   type        = string

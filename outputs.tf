@@ -44,6 +44,16 @@ output "vpc_self_link" {
   value       = google_compute_network.vpc_network.self_link
 }
 
+output "prod_network_name" {
+  description = "Name of the production VPC network"
+  value       = google_compute_network.prod_managenet.name
+}
+
+output "prod_network_self_link" {
+  description = "Self-link of the production VPC network"
+  value       = google_compute_network.prod_managenet.self_link
+}
+
 output "primary_subnet_name" {
   description = "Name of the primary subnet"
   value       = google_compute_subnetwork.primary_subnet.name
@@ -82,6 +92,36 @@ output "secondary_subnet_self_link" {
 output "secondary_subnet_cidr" {
   description = "CIDR range of the secondary subnet"
   value       = google_compute_subnetwork.secondary_subnet.ip_cidr_range
+}
+
+output "prod_primary_subnet_name" {
+  description = "Name of the production primary subnet"
+  value       = google_compute_subnetwork.prod_primary_subnet.name
+}
+
+output "prod_primary_subnet_self_link" {
+  description = "Self-link of the production primary subnet"
+  value       = google_compute_subnetwork.prod_primary_subnet.self_link
+}
+
+output "prod_primary_subnet_cidr" {
+  description = "CIDR range of the production primary subnet"
+  value       = google_compute_subnetwork.prod_primary_subnet.ip_cidr_range
+}
+
+output "prod_secondary_subnet_name" {
+  description = "Name of the production secondary subnet"
+  value       = google_compute_subnetwork.prod_secondary_subnet.name
+}
+
+output "prod_secondary_subnet_self_link" {
+  description = "Self-link of the production secondary subnet"
+  value       = google_compute_subnetwork.prod_secondary_subnet.self_link
+}
+
+output "prod_secondary_subnet_cidr" {
+  description = "CIDR range of the production secondary subnet"
+  value       = google_compute_subnetwork.prod_secondary_subnet.ip_cidr_range
 }
 
 output "router_name" {

@@ -6,6 +6,47 @@ resource "google_compute_network" "vpc_network" {
   description             = var.vpc_description
 }
 
+resource "google_compute_network" "prod_managenet" {
+  project                      = var.prod_network_project
+  name                         = var.prod_network_name
+  description                  = var.prod_network_description
+  auto_create_subnetworks      = var.prod_network_auto_create_subnetworks
+  routing_mode                 = var.prod_network_routing_mode
+  bgp_best_path_selection_mode = var.prod_network_bgp_best_path_selection_mode
+}
+
+resource "google_compute_subnetwork" "prod_primary_subnet" {
+  project                  = var.prod_network_project
+  name                     = var.prod_primary_subnet_name
+  description              = var.prod_primary_subnet_description
+  ip_cidr_range            = var.prod_primary_subnet_cidr
+  stack_type               = var.prod_primary_subnet_stack_type
+  network                  = google_compute_network.prod_managenet.id
+  region                   = var.prod_primary_subnet_region
+  private_ip_google_access = var.prod_primary_subnet_private_ip_google_access
+
+  dynamic "log_config" {
+    for_each = var.prod_primary_subnet_enable_flow_logs ? [true] : []
+    content {}
+  }
+}
+
+resource "google_compute_subnetwork" "prod_secondary_subnet" {
+  project                  = var.prod_network_project
+  name                     = var.prod_secondary_subnet_name
+  description              = var.prod_secondary_subnet_description
+  ip_cidr_range            = var.prod_secondary_subnet_cidr
+  stack_type               = var.prod_secondary_subnet_stack_type
+  network                  = google_compute_network.prod_managenet.id
+  region                   = var.prod_secondary_subnet_region
+  private_ip_google_access = var.prod_secondary_subnet_private_ip_google_access
+
+  dynamic "log_config" {
+    for_each = var.prod_secondary_subnet_enable_flow_logs ? [true] : []
+    content {}
+  }
+}
+
 # Subnet in the primary region
 resource "google_compute_subnetwork" "primary_subnet" {
   name          = var.primary_subnet_name
@@ -68,7 +109,7 @@ resource "google_compute_firewall" "allow_ssh" {
   }
 
   source_ranges = ["0.0.0.0/0"] #var.allow_ssh_from
-#  target_tags   = ["ssh"]
+  #  target_tags   = ["ssh"]
 }
 
 # Firewall Rule - Allow HTTP
