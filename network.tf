@@ -55,6 +55,35 @@ resource "google_compute_subnetwork" "prod_secondary_subnet" {
   }
 }
 
+resource "google_compute_firewall" "prod_allow_ssh" {
+  project   = var.prod_network_project
+  name      = var.prod_ssh_firewall_name
+  network   = google_compute_network.prod_managenet.id
+  direction = var.prod_ssh_firewall_direction
+  priority  = var.prod_ssh_firewall_priority
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = var.prod_ssh_firewall_source_ranges
+}
+
+resource "google_compute_firewall" "prod_allow_icmp" {
+  project   = var.prod_network_project
+  name      = var.prod_icmp_firewall_name
+  network   = google_compute_network.prod_managenet.id
+  direction = var.prod_icmp_firewall_direction
+  priority  = var.prod_icmp_firewall_priority
+
+  allow {
+    protocol = "icmp"
+  }
+
+  source_ranges = var.prod_icmp_firewall_source_ranges
+}
+
 # Subnet in the primary region
 resource "google_compute_subnetwork" "primary_subnet" {
   name          = var.primary_subnet_name

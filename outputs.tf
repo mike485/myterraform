@@ -28,6 +28,46 @@ output "zone" {
   value       = google_compute_instance.terraform.zone
 }
 
+output "prod_vm_1_name" {
+  description = "Name of the production VM instance"
+  value       = google_compute_instance.prod_vm_1.name
+}
+
+output "prod_vm_1_id" {
+  description = "Provider-assigned ID of the production VM instance"
+  value       = google_compute_instance.prod_vm_1.id
+}
+
+output "prod_vm_1_self_link" {
+  description = "Self-link of the production VM instance"
+  value       = google_compute_instance.prod_vm_1.self_link
+}
+
+output "prod_vm_1_internal_ip" {
+  description = "Internal IP address of the production VM instance"
+  value       = google_compute_instance.prod_vm_1.network_interface[0].network_ip
+}
+
+output "prod_vm_2_name" {
+  description = "Name of the second production VM instance"
+  value       = google_compute_instance.prod_vm_2.name
+}
+
+output "prod_vm_2_id" {
+  description = "Provider-assigned ID of the second production VM instance"
+  value       = google_compute_instance.prod_vm_2.id
+}
+
+output "prod_vm_2_self_link" {
+  description = "Self-link of the second production VM instance"
+  value       = google_compute_instance.prod_vm_2.self_link
+}
+
+output "prod_vm_2_internal_ip" {
+  description = "Internal IP address of the second production VM instance"
+  value       = google_compute_instance.prod_vm_2.network_interface[0].network_ip
+}
+
 # VPC Outputs
 output "vpc_name" {
   description = "Name of the VPC network"
@@ -52,6 +92,26 @@ output "prod_network_name" {
 output "prod_network_self_link" {
   description = "Self-link of the production VPC network"
   value       = google_compute_network.prod_managenet.self_link
+}
+
+output "prod_ssh_firewall_name" {
+  description = "Name of the production SSH firewall rule"
+  value       = google_compute_firewall.prod_allow_ssh.name
+}
+
+output "prod_ssh_firewall_self_link" {
+  description = "Self-link of the production SSH firewall rule"
+  value       = google_compute_firewall.prod_allow_ssh.self_link
+}
+
+output "prod_icmp_firewall_name" {
+  description = "Name of the production ICMP firewall rule"
+  value       = google_compute_firewall.prod_allow_icmp.name
+}
+
+output "prod_icmp_firewall_self_link" {
+  description = "Self-link of the production ICMP firewall rule"
+  value       = google_compute_firewall.prod_allow_icmp.self_link
 }
 
 output "primary_subnet_name" {
