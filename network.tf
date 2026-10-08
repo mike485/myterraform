@@ -35,26 +35,6 @@ resource "google_compute_subnetwork" "prod_primary_subnet" {
   }
 }
 
-resource "google_compute_subnetwork" "prod_secondary_subnet" {
-  project                  = var.prod_network_project
-  name                     = var.prod_secondary_subnet_name
-  description              = var.prod_secondary_subnet_description
-  ip_cidr_range            = var.prod_secondary_subnet_cidr
-  stack_type               = var.prod_secondary_subnet_stack_type
-  network                  = google_compute_network.prod_managenet.id
-  region                   = var.prod_secondary_subnet_region
-  private_ip_google_access = var.prod_secondary_subnet_private_ip_google_access
-
-  dynamic "log_config" {
-    for_each = var.prod_secondary_subnet_enable_flow_logs ? [true] : []
-    content {
-      aggregation_interval = "INTERVAL_5_SEC"
-      flow_sampling        = 0.5
-      metadata             = "INCLUDE_ALL_METADATA"
-    }
-  }
-}
-
 resource "google_compute_firewall" "prod_allow_ssh" {
   project   = var.prod_network_project
   name      = var.prod_ssh_firewall_name
@@ -101,18 +81,6 @@ resource "google_compute_subnetwork" "primary_subnet" {
   }
 }
 
-# Subnet in the secondary region
-resource "google_compute_subnetwork" "secondary_subnet" {
-  name          = var.secondary_subnet_name
-  ip_cidr_range = var.secondary_subnet_cidr
-  network       = google_compute_network.vpc_network.id
-  region        = var.region
-  description   = "Secondary subnet in ${var.region}"
-
-  private_ip_google_access = var.private_ip_google_access
-}
-
-
 # Firewall Rule - Allow internal traffic
 resource "google_compute_firewall" "allow_internal" {
   name    = "${var.vpc_name}-allow-internal"
@@ -132,7 +100,7 @@ resource "google_compute_firewall" "allow_internal" {
     protocol = "icmp"
   }
 
-  source_ranges = [var.primary_subnet_cidr, var.secondary_subnet_cidr]
+  source_ranges = [var.primary_subnet_cidr]
 }
 
 # Firewall Rule - Allow SSH ########################################
