@@ -227,7 +227,7 @@ variable "prod_webserver_startup_script" {
     #!/bin/bash
     apt-get update
     apt-get install apache2 -y
-    echo "Hello World from us-east1 prod-webserver2" | tee /var/www/html/index.html
+    echo "Hello World from us-central1-a prod-webserver2" | tee /var/www/html/index.html
     systemctl restart apache2
   EOT
 }
