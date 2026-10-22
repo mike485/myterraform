@@ -196,6 +196,42 @@ variable "vm_boot_image" {
   default     = "debian-cloud/debian-12"
 }
 
+variable "dev_webserver_name" {
+  description = "Name of the development web server instance"
+  type        = string
+  default     = "dev-webserver1"
+}
+
+variable "dev_webserver_startup_script" {
+  description = "Startup script that installs Apache on the development web server"
+  type        = string
+  default     = <<-EOT
+    #!/bin/bash
+    apt-get update
+    apt-get install apache2 -y
+    echo "Hello World from us-east1 dev-webserver1" | tee /var/www/html/index.html
+    systemctl restart apache2
+  EOT
+}
+
+variable "prod_webserver_name" {
+  description = "Name of the production web server instance"
+  type        = string
+  default     = "prod-webserver2"
+}
+
+variable "prod_webserver_startup_script" {
+  description = "Startup script that installs Apache on the production web server"
+  type        = string
+  default     = <<-EOT
+    #!/bin/bash
+    apt-get update
+    apt-get install apache2 -y
+    echo "Hello World from us-east1 prod-webserver2" | tee /var/www/html/index.html
+    systemctl restart apache2
+  EOT
+}
+
 variable "prod_vm_1_name" {
   description = "Name of the first production virtual machine"
   type        = string
