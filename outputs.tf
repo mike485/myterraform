@@ -29,6 +29,26 @@ output "prod_network_self_link" {
   value       = google_compute_network.prod_managenet.self_link
 }
 
+output "dev_to_prod_peering_name" {
+  description = "Name of the peering from the development network to production"
+  value       = google_compute_network_peering.dev_to_prod.name
+}
+
+output "dev_to_prod_peering_state" {
+  description = "State of the development-to-production VPC peering"
+  value       = google_compute_network_peering.dev_to_prod.state
+}
+
+output "prod_to_dev_peering_name" {
+  description = "Name of the peering from the production network to development"
+  value       = google_compute_network_peering.prod_to_dev.name
+}
+
+output "prod_to_dev_peering_state" {
+  description = "State of the production-to-development VPC peering"
+  value       = google_compute_network_peering.prod_to_dev.state
+}
+
 output "subnet_name" {
   description = "Name of the development subnet"
   value       = google_compute_subnetwork.dev_primary_subnet.name

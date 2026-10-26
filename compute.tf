@@ -1,3 +1,29 @@
+resource "google_compute_firewall" "allow_prod_subnet" {
+  name          = var.dev_to_prod_firewall_name
+  project       = var.project
+  description   = "Allow traffic from the production subnet over VPC peering"
+  network       = google_compute_network.dev_managenet.id
+  direction     = "INGRESS"
+  source_ranges = [var.prod_subnet_ip_cidr_range]
+
+  allow {
+    protocol = "all"
+  }
+}
+
+resource "google_compute_firewall" "allow_dev_subnet" {
+  name          = var.prod_to_dev_firewall_name
+  project       = var.project
+  description   = "Allow traffic from the development subnet over VPC peering"
+  network       = google_compute_network.prod_managenet.id
+  direction     = "INGRESS"
+  source_ranges = [var.subnet_ip_cidr_range]
+
+  allow {
+    protocol = "all"
+  }
+}
+
 resource "google_compute_firewall" "allow_iap_ssh" {
   name        = var.iap_ssh_firewall_name
   project     = var.project

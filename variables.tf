@@ -28,6 +28,18 @@ variable "prod_network_description" {
   default     = "Production Network"
 }
 
+variable "dev_to_prod_peering_name" {
+  description = "Name of the peering from the development network to production"
+  type        = string
+  default     = "dev-managenet-to-prod-managenet"
+}
+
+variable "prod_to_dev_peering_name" {
+  description = "Name of the peering from the production network to development"
+  type        = string
+  default     = "prod-managenet-to-dev-managenet"
+}
+
 variable "subnet_name" {
   description = "Name of the development subnet"
   type        = string
@@ -74,6 +86,18 @@ variable "prod_subnet_region" {
   description = "Region of the production subnet"
   type        = string
   default     = "us-central1"
+}
+
+variable "dev_to_prod_firewall_name" {
+  description = "Name of the firewall rule allowing production subnet traffic into development"
+  type        = string
+  default     = "dev-managenet-allow-prod-subnet"
+}
+
+variable "prod_to_dev_firewall_name" {
+  description = "Name of the firewall rule allowing development subnet traffic into production"
+  type        = string
+  default     = "prod-managenet-allow-dev-subnet"
 }
 
 variable "iap_ssh_firewall_name" {
