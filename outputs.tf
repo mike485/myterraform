@@ -210,21 +210,6 @@ output "vm_internal_ip" {
   value       = google_compute_instance.dev_vm_1.network_interface[0].network_ip
 }
 
-output "vm_2_name" {
-  description = "Name of the second development virtual machine"
-  value       = google_compute_instance.dev_vm_2.name
-}
-
-output "vm_2_id" {
-  description = "ID of the second development virtual machine"
-  value       = google_compute_instance.dev_vm_2.id
-}
-
-output "vm_2_internal_ip" {
-  description = "Internal IP address of the second development virtual machine"
-  value       = google_compute_instance.dev_vm_2.network_interface[0].network_ip
-}
-
 output "dev_webserver_name" {
   description = "Name of the development web server instance"
   value       = google_compute_instance.dev_webserver1.name
@@ -253,21 +238,6 @@ output "prod_vm_1_id" {
 output "prod_vm_1_internal_ip" {
   description = "Internal IP address of the first production virtual machine"
   value       = google_compute_instance.prod_vm_1.network_interface[0].network_ip
-}
-
-output "prod_vm_2_name" {
-  description = "Name of the second production virtual machine"
-  value       = google_compute_instance.prod_vm_2.name
-}
-
-output "prod_vm_2_id" {
-  description = "ID of the second production virtual machine"
-  value       = google_compute_instance.prod_vm_2.id
-}
-
-output "prod_vm_2_internal_ip" {
-  description = "Internal IP address of the second production virtual machine"
-  value       = google_compute_instance.prod_vm_2.network_interface[0].network_ip
 }
 
 output "prod_webserver_name" {

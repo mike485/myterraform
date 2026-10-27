@@ -132,24 +132,6 @@ resource "google_compute_instance" "dev_vm_1" {
   }
 }
 
-resource "google_compute_instance" "dev_vm_2" {
-  name         = var.vm_2_name
-  project      = var.project
-  machine_type = var.vm_machine_type
-  zone         = var.vm_zone
-
-  boot_disk {
-    initialize_params {
-      image = var.vm_boot_image
-    }
-  }
-
-  network_interface {
-    network    = google_compute_network.dev_managenet.id
-    subnetwork = google_compute_subnetwork.dev_primary_subnet.id
-  }
-}
-
 resource "google_compute_instance" "dev_webserver1" {
   name         = var.dev_webserver_name
   project      = var.project
@@ -173,24 +155,6 @@ resource "google_compute_instance" "dev_webserver1" {
 
 resource "google_compute_instance" "prod_vm_1" {
   name         = var.prod_vm_1_name
-  project      = var.project
-  machine_type = var.prod_vm_machine_type
-  zone         = var.prod_vm_zone
-
-  boot_disk {
-    initialize_params {
-      image = var.prod_vm_boot_image
-    }
-  }
-
-  network_interface {
-    network    = google_compute_network.prod_managenet.id
-    subnetwork = google_compute_subnetwork.prod_primary_subnet.id
-  }
-}
-
-resource "google_compute_instance" "prod_vm_2" {
-  name         = var.prod_vm_2_name
   project      = var.project
   machine_type = var.prod_vm_machine_type
   zone         = var.prod_vm_zone

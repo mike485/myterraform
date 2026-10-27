@@ -196,12 +196,6 @@ variable "vm_name" {
   default     = "dev-vm-1"
 }
 
-variable "vm_2_name" {
-  description = "Name of the second development virtual machine"
-  type        = string
-  default     = "dev-vm-2"
-}
-
 variable "vm_machine_type" {
   description = "Machine type for the development virtual machine"
   type        = string
@@ -260,12 +254,6 @@ variable "prod_vm_1_name" {
   description = "Name of the first production virtual machine"
   type        = string
   default     = "prod-vm-1"
-}
-
-variable "prod_vm_2_name" {
-  description = "Name of the second production virtual machine"
-  type        = string
-  default     = "prod-vm-2"
 }
 
 variable "prod_vm_machine_type" {
