@@ -12,5 +12,3 @@ Networking (VPC): Custom VPC networks, subnets, firewall rules, and Cloud NAT co
 Compute & Containers: Provisioning of managed resources (e.g., GKE clusters or Compute Engine instances).
 
 Storage & Databases: Secure Cloud Storage buckets and managed database instances (such as Cloud Spanner or Cloud SQL).
-
-Testing config will be added shortly
