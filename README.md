@@ -7,8 +7,9 @@ By using Infrastructure as Code (IaC), this project ensures that the environment
 
 Identity & Access Management (IAM): Service accounts and granular role assignments ensuring the principle of least privilege.
 
-Networking (VPC): Custom VPC networks, subnets, firewall rules, and Cloud NAT configurations.
+Networking (VPC): Custom VPC networks, subnets, firewall rules, VPN, and Cloud NAT configurations.
 
 Compute & Containers: Provisioning of managed resources (e.g., GKE clusters or Compute Engine instances).
 
 Storage & Databases: Secure Cloud Storage buckets and managed database instances (such as Cloud Spanner or Cloud SQL).
+
