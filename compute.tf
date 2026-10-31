@@ -24,6 +24,43 @@ resource "google_compute_firewall" "allow_dev_subnet" {
   }
 }
 
+resource "google_compute_firewall" "on_prem_allow_internal" {
+  name          = var.on_prem_allow_internal_firewall_name
+  project       = var.project
+  description   = var.on_prem_allow_internal_firewall_description
+  network       = google_compute_network.on_prem_vpc.id
+  direction     = "INGRESS"
+  priority      = 1000
+  source_ranges = [var.on_prem_internal_source_range]
+
+  allow {
+    protocol = "tcp"
+  }
+
+  allow {
+    protocol = "udp"
+  }
+
+  allow {
+    protocol = "icmp"
+  }
+}
+
+resource "google_compute_firewall" "on_prem_allow_iap_ssh" {
+  name          = var.on_prem_allow_iap_ssh_firewall_name
+  project       = var.project
+  description   = var.on_prem_allow_iap_ssh_firewall_description
+  network       = google_compute_network.on_prem_vpc.id
+  direction     = "INGRESS"
+  priority      = 1000
+  source_ranges = [var.iap_source_range]
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+}
+
 resource "google_compute_firewall" "allow_iap_ssh" {
   name        = var.iap_ssh_firewall_name
   project     = var.project
@@ -168,6 +205,24 @@ resource "google_compute_instance" "prod_vm_1" {
   network_interface {
     network    = google_compute_network.prod_managenet.id
     subnetwork = google_compute_subnetwork.prod_primary_subnet.id
+  }
+}
+
+resource "google_compute_instance" "on_prem_vm_1" {
+  name         = var.on_prem_vm_1_name
+  project      = var.project
+  machine_type = var.on_prem_vm_machine_type
+  zone         = var.on_prem_vm_zone
+
+  boot_disk {
+    initialize_params {
+      image = var.on_prem_vm_boot_image
+    }
+  }
+
+  network_interface {
+    network    = google_compute_network.on_prem_vpc.id
+    subnetwork = google_compute_subnetwork.on_prem_subnet_1.id
   }
 }
 

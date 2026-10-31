@@ -4,6 +4,86 @@ output "network_name" {
   value       = google_compute_network.dev_managenet.name
 }
 
+output "on_prem_vpc_name" {
+  description = "Name of the on-premises VPC network"
+  value       = google_compute_network.on_prem_vpc.name
+}
+
+output "on_prem_vpc_id" {
+  description = "ID of the on-premises VPC network"
+  value       = google_compute_network.on_prem_vpc.id
+}
+
+output "on_prem_vpc_self_link" {
+  description = "Self-link of the on-premises VPC network"
+  value       = google_compute_network.on_prem_vpc.self_link
+}
+
+output "on_prem_subnet_1_name" {
+  description = "Name of the on-prem subnet"
+  value       = google_compute_subnetwork.on_prem_subnet_1.name
+}
+
+output "on_prem_subnet_1_id" {
+  description = "ID of the on-prem subnet"
+  value       = google_compute_subnetwork.on_prem_subnet_1.id
+}
+
+output "on_prem_subnet_1_self_link" {
+  description = "Self-link of the on-prem subnet"
+  value       = google_compute_subnetwork.on_prem_subnet_1.self_link
+}
+
+output "on_prem_subnet_1_ip_cidr_range" {
+  description = "Primary IPv4 CIDR range of the on-prem subnet"
+  value       = google_compute_subnetwork.on_prem_subnet_1.ip_cidr_range
+}
+
+output "on_prem_allow_internal_firewall_name" {
+  description = "Name of the internal on-prem firewall rule"
+  value       = google_compute_firewall.on_prem_allow_internal.name
+}
+
+output "on_prem_allow_internal_firewall_id" {
+  description = "ID of the internal on-prem firewall rule"
+  value       = google_compute_firewall.on_prem_allow_internal.id
+}
+
+output "on_prem_allow_internal_firewall_self_link" {
+  description = "Self-link of the internal on-prem firewall rule"
+  value       = google_compute_firewall.on_prem_allow_internal.self_link
+}
+
+output "on_prem_allow_iap_ssh_firewall_name" {
+  description = "Name of the on-prem IAP SSH firewall rule"
+  value       = google_compute_firewall.on_prem_allow_iap_ssh.name
+}
+
+output "on_prem_allow_iap_ssh_firewall_id" {
+  description = "ID of the on-prem IAP SSH firewall rule"
+  value       = google_compute_firewall.on_prem_allow_iap_ssh.id
+}
+
+output "on_prem_allow_iap_ssh_firewall_self_link" {
+  description = "Self-link of the on-prem IAP SSH firewall rule"
+  value       = google_compute_firewall.on_prem_allow_iap_ssh.self_link
+}
+
+output "on_prem_vm_1_name" {
+  description = "Name of the on-prem VM"
+  value       = google_compute_instance.on_prem_vm_1.name
+}
+
+output "on_prem_vm_1_id" {
+  description = "ID of the on-prem VM"
+  value       = google_compute_instance.on_prem_vm_1.id
+}
+
+output "on_prem_vm_1_internal_ip" {
+  description = "Internal IP address of the on-prem VM"
+  value       = google_compute_instance.on_prem_vm_1.network_interface[0].network_ip
+}
+
 output "network_id" {
   description = "ID of the development VPC network"
   value       = google_compute_network.dev_managenet.id

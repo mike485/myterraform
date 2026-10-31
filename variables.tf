@@ -10,6 +10,96 @@ variable "network_name" {
   default     = "dev-managenet"
 }
 
+variable "on_prem_vpc_name" {
+  description = "Name of the simulated on-premises VPC network"
+  type        = string
+  default     = "on-prem-vpc"
+}
+
+variable "on_prem_vpc_description" {
+  description = "Description of the simulated on-premises VPC network"
+  type        = string
+  default     = "Simulated on-premises network environment"
+}
+
+variable "on_prem_subnet_1_name" {
+  description = "Name of the on-premises subnet"
+  type        = string
+  default     = "on-prem-subnet-1"
+}
+
+variable "on_prem_subnet_1_description" {
+  description = "Description of the on-premises subnet"
+  type        = string
+  default     = "Subnet for the simulated on-premises network"
+}
+
+variable "on_prem_subnet_1_ip_cidr_range" {
+  description = "Primary IPv4 CIDR range of the on-premises subnet"
+  type        = string
+  default     = "192.168.10.0/24"
+}
+
+variable "on_prem_subnet_1_region" {
+  description = "Region of the on-premises subnet"
+  type        = string
+  default     = "us-central1"
+}
+
+variable "on_prem_allow_internal_firewall_name" {
+  description = "Name of the firewall rule allowing internal on-prem traffic"
+  type        = string
+  default     = "on-prem-allow-internal"
+}
+
+variable "on_prem_allow_internal_firewall_description" {
+  description = "Description of the firewall rule allowing internal on-prem traffic"
+  type        = string
+  default     = "Allow internal traffic within simulated on-premise ranges"
+}
+
+variable "on_prem_internal_source_range" {
+  description = "Source range allowed for internal on-prem security policy"
+  type        = string
+  default     = "192.168.0.0/16"
+}
+
+variable "on_prem_allow_iap_ssh_firewall_name" {
+  description = "Name of the firewall rule allowing SSH via IAP on the on-prem network"
+  type        = string
+  default     = "on-prem-allow-iap-ssh"
+}
+
+variable "on_prem_allow_iap_ssh_firewall_description" {
+  description = "Description of the firewall rule allowing SSH via IAP on the on-prem network"
+  type        = string
+  default     = "Allow SSH from Google Cloud IAP"
+}
+
+variable "on_prem_vm_1_name" {
+  description = "Name of the first on-premises virtual machine"
+  type        = string
+  default     = "on-prem-vm-1"
+}
+
+variable "on_prem_vm_machine_type" {
+  description = "Machine type for the on-premises virtual machine"
+  type        = string
+  default     = "e2-micro"
+}
+
+variable "on_prem_vm_zone" {
+  description = "Zone for the on-premises virtual machine"
+  type        = string
+  default     = "us-central1-c"
+}
+
+variable "on_prem_vm_boot_image" {
+  description = "Boot disk image for the on-premises virtual machine"
+  type        = string
+  default     = "debian-cloud/debian-12"
+}
+
 variable "network_description" {
   description = "Description of the development VPC network"
   type        = string
