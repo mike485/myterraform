@@ -8,13 +8,6 @@ resource "google_compute_network" "dev_managenet" {
   bgp_best_path_selection_mode = "LEGACY"
 }
 
-resource "google_compute_vpn_gateway" "vpc_dev_vpn_gw1" {
-  name    = var.vpc_dev_vpn_gw1_name
-  project = var.project
-  region  = var.vpc_dev_vpn_gw1_region
-  network = google_compute_network.dev_managenet.id
-}
-
 # On-premises network for simulated internal access and IAP/ICMP ingress rules.
 resource "google_compute_network" "on_prem_vpc" {
   name                         = var.on_prem_vpc_name

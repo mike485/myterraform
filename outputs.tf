@@ -4,21 +4,6 @@ output "network_name" {
   value       = google_compute_network.dev_managenet.name
 }
 
-output "vpc_dev_vpn_gw1_name" {
-  description = "Name of the development VPC VPN gateway"
-  value       = google_compute_vpn_gateway.vpc_dev_vpn_gw1.name
-}
-
-output "vpc_dev_vpn_gw1_id" {
-  description = "ID of the development VPC VPN gateway"
-  value       = google_compute_vpn_gateway.vpc_dev_vpn_gw1.id
-}
-
-output "vpc_dev_vpn_gw1_self_link" {
-  description = "Self-link of the development VPC VPN gateway"
-  value       = google_compute_vpn_gateway.vpc_dev_vpn_gw1.self_link
-}
-
 output "on_prem_vpc_name" {
   description = "Name of the on-premises VPC network"
   value       = google_compute_network.on_prem_vpc.name

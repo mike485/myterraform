@@ -10,18 +10,6 @@ variable "network_name" {
   default     = "dev-managenet"
 }
 
-variable "vpc_dev_vpn_gw1_name" {
-  description = "Name of the development VPC VPN gateway"
-  type        = string
-  default     = "vpc-dev-vpn-gw1"
-}
-
-variable "vpc_dev_vpn_gw1_region" {
-  description = "Region of the development VPC VPN gateway"
-  type        = string
-  default     = "us-east1"
-}
-
 variable "on_prem_vpc_name" {
   description = "Name of the simulated on-premises VPC network"
   type        = string
