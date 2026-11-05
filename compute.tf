@@ -61,6 +61,20 @@ resource "google_compute_firewall" "on_prem_allow_iap_ssh" {
   }
 }
 
+resource "google_compute_firewall" "on_prem_allow_icmp" {
+  name          = var.on_prem_allow_icmp_firewall_name
+  project       = var.project
+  description   = var.on_prem_allow_icmp_firewall_description
+  network       = google_compute_network.on_prem_vpc.id
+  direction     = "INGRESS"
+  priority      = 1000
+  source_ranges = [var.on_prem_icmp_source_range]
+
+  allow {
+    protocol = "icmp"
+  }
+}
+
 resource "google_compute_firewall" "allow_iap_ssh" {
   name        = var.iap_ssh_firewall_name
   project     = var.project
