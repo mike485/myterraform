@@ -76,6 +76,24 @@ variable "on_prem_allow_iap_ssh_firewall_description" {
   default     = "Allow SSH from Google Cloud IAP"
 }
 
+variable "on_prem_allow_icmp_firewall_name" {
+  description = "Name of the firewall rule allowing ICMP on the on-prem network"
+  type        = string
+  default     = "on-prem-allow-icmp"
+}
+
+variable "on_prem_allow_icmp_firewall_description" {
+  description = "Description of the firewall rule allowing ICMP on the on-prem network"
+  type        = string
+  default     = "Allow ICMP traffic from any source on the on-prem network"
+}
+
+variable "on_prem_icmp_source_range" {
+  description = "Source range allowed for ICMP on the on-prem network"
+  type        = string
+  default     = "0.0.0.0/0"
+}
+
 variable "on_prem_vm_1_name" {
   description = "Name of the first on-premises virtual machine"
   type        = string

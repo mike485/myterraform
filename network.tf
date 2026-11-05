@@ -8,6 +8,7 @@ resource "google_compute_network" "dev_managenet" {
   bgp_best_path_selection_mode = "LEGACY"
 }
 
+# On-premises network for simulated internal access and IAP/ICMP ingress rules.
 resource "google_compute_network" "on_prem_vpc" {
   name                         = var.on_prem_vpc_name
   project                      = var.project

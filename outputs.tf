@@ -69,6 +69,21 @@ output "on_prem_allow_iap_ssh_firewall_self_link" {
   value       = google_compute_firewall.on_prem_allow_iap_ssh.self_link
 }
 
+output "on_prem_allow_icmp_firewall_name" {
+  description = "Name of the on-prem ICMP firewall rule"
+  value       = google_compute_firewall.on_prem_allow_icmp.name
+}
+
+output "on_prem_allow_icmp_firewall_id" {
+  description = "ID of the on-prem ICMP firewall rule"
+  value       = google_compute_firewall.on_prem_allow_icmp.id
+}
+
+output "on_prem_allow_icmp_firewall_self_link" {
+  description = "Self-link of the on-prem ICMP firewall rule"
+  value       = google_compute_firewall.on_prem_allow_icmp.self_link
+}
+
 output "on_prem_vm_1_name" {
   description = "Name of the on-prem VM"
   value       = google_compute_instance.on_prem_vm_1.name
